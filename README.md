@@ -1,1 +1,1 @@
-# RQG
+# Random Quote Generator
