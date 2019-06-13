@@ -1,9 +1,9 @@
 # Random Quote Generator
 
--Randomly generates a dog quote
+-This Random Quote Generator randomly generates dog quotes and photos for the viewer. 
+-To view the live web app: https://tydillon.github.io/RandomQuoteGenerator/
 
--Utilizes an API to generate a random photo of a dog
+## Source
 
--Randomly changes background color with each new quote
+-This project was adapted from a project on Treehouse. HTML and CSS files were provided. This project utilized HTML, CSS, and vanilla Javascript.
 
--To view live web app: https://tydillon.github.io/RandomQuoteGenerator/
