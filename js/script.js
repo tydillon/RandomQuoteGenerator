@@ -57,24 +57,34 @@ const getRandomQuote = () => {
   return randQuote;
 }
 
-//https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
-let newDogPic = () => {
-//Pulling in random dog pictures from an API
-//Open a new connection, using the GET request on the URL endpoint, refactoring as JSON
-    request.open('GET', 'https://dog.ceo/api/breeds/image/random', true)
+// //https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/
+// let newDogPic = () => {
+// //Pulling in random dog pictures from an API
+// //Open a new connection, using the GET request on the URL endpoint, refactoring as JSON
+//     request.open('GET', 'https://dog.ceo/api/breeds/image/random', true)
 
-    request.onload = function() {
-        dogpic = JSON.parse(this.response)
-    }
-    //send request
-    request.send()
+//     request.onload = function() {
+//         dogpic = JSON.parse(this.response)
+//     }
+//     //send request
+//     request.send()
+// }
+
+
+//Using new fetch method instead of previous method above to get a dog picture
+let newDogPic = () => {
+  const img = document.querySelector('#toppic')
+  fetch('https://dog.ceo/api/breeds/image/random')
+  .then(r => r.json())
+  .then(data => img.src = data.message)
+  .catch(error => console.log('Looks like there was a problem', error))
 }
 
 // prints quote to the HTML
 let printQuote = () => {
   let quoteToPrint = getRandomQuote();
   let str = "";
-  str = `<p class="quote">${quoteToPrint.quote}<img class="toppic" src="${dogpic.message}"></p><p class="source">${quoteToPrint.source}`
+  str = `<img id="toppic" src="${dogpic}"><p class="quote">${quoteToPrint.quote}</p><p class="source">${quoteToPrint.source}`
   if (quoteToPrint.citation) {str+=`<span class="citation">${quoteToPrint.citation}</span>`}
   if (quoteToPrint.year){str+=`<span class="year">${quoteToPrint.year}</span>`}
   str+=`</p>`
