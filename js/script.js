@@ -71,9 +71,7 @@ const quotes = [
 //retrieve random quote from the list
 const getRandomQuote = () => {
   //if my copy is empty, set it equal to my quotes array. Works because of the spread syntax
-  if (copy.length < 1) {
-    copy = [...quotes]
-  }
+  copy.length < 1 ? (copy = [...quotes]) : null
   //generates random quote from the copy array
   let randnum = Math.floor(Math.random() * copy.length)
   let randQuote = copy[randnum]
@@ -84,7 +82,7 @@ const getRandomQuote = () => {
 
 //Using new fetch method instead of previous method above to get a dog picture
 const newDogPic = () => {
-  const img = document.querySelector('#toppic')
+  let img = document.querySelector('#toppic')
   fetch('https://dog.ceo/api/breeds/image/random')
     .then(r => r.json())
     .then(data => (img.src = data.message))
@@ -113,8 +111,8 @@ const printQuote = () => {
 
 //change background color
 const getRandomColor = () => {
-  var letters = '0123456789ABCDEF'
-  var color = '#'
+  const letters = '0123456789ABCDEF'
+  let color = '#'
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * letters.length)]
   }
